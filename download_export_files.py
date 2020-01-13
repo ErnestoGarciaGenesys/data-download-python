@@ -11,7 +11,7 @@ def request_api_token():
     # https://requests-oauthlib.readthedocs.io/en/latest/oauth2_workflow.html#backend-application-flow
 
     return requests.post(
-        'https://gapi-euw1.genesyscloud.com/auth/v3/oauth/token',
+        conf.API_BASE_URL + '/auth/v3/oauth/token',
         headers={
             'x-api-key': conf.API_KEY,
             'Accept': 'application/json',
@@ -32,7 +32,7 @@ def extract_api_token(token_response):
 
 def request_history(api_token):
     return requests.get(
-        'https://gapi-euw1.genesyscloud.com/data-download/v4/export/history',
+        conf.API_BASE_URL + '/data-download/v4/export/history',
         params={
             'orderField': 'createdDate', # this should be by 'id', but it does not work
             'descAsc': 'true', # desc
@@ -73,7 +73,7 @@ def create_folder(folder):
 def download_file(file_name, api_token):
     http = urllib3.PoolManager()
 
-    url = 'https://gapi-euw1.genesyscloud.com/data-download/v3/files/' + file_name
+    url = conf.API_BASE_URL + '/data-download/v3/files/' + file_name
     
     headers = {
         'x-api-key': conf.API_KEY,

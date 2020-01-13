@@ -22,6 +22,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 api_token_response = request_api_token()
 pprint(api_token_response.json())
+api_token_response.raw.info()
+api_token_response.status_code
 api_token = extract_api_token(api_token_response)
 pprint(api_token)
 

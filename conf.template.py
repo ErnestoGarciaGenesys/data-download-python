@@ -1,5 +1,6 @@
 mandatory = optional = None
 
+API_BASE_URL = mandatory
 API_KEY = mandatory
 CLIENT_ID = mandatory
 CLIENT_SECRET = mandatory
